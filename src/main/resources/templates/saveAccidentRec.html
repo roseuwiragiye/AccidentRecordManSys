@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Police Accident Records Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    <meta charset="ISO-8859-1">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-pzjw8f+ua6UYGBD0ycKP3B+VxpW0v95p1BAgiKgXP3Xc5z8P6eyz0f5g4yJvGpFh"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Police Accident Records Management System</h1>
+    <hr>
+    <h2>Register an accident</h2>
+
+    <form action="#" th:action="@{/saveAccident}" th:object="${accident}" method="POST">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <input type="text" th:field="*{name}" placeholder="MUGISHA Brave" class="form-control mb-4 col-4">
+        <label class="col-sm-2 col-form-label">Plate Number</label>
+        <input type="text" th:field="*{plateNo}" placeholder="RAC234H" class="form-control mb-4 col-4">
+        <label class="col-sm-2 col-form-label">Accident location</label>
+        <input type="text" th:field="*{location}" placeholder="GASABO" class="form-control mb-4 col-4">
+<!--        <label class="col-sm-2 col-form-label">The date</label>-->
+<!--        <input type="datetime-local" th:field="*{dateTime}" placeholder="Occured date" class="form-control mb-4 col-4">-->
+        <label class="col-sm-2 col-form-label">Number of death</label>
+        <input type="text" th:field="*{death}" placeholder="ENTER A NUMBER" class="form-control mb-4 col-4">
+        <label class="col-sm-2 col-form-label">Number of patients</label>
+        <input type="text" th:field="*{patients}" placeholder="ENTER A NUMBER" class="form-control mb-4 col-4">
+        <label class="col-sm-2 col-form-label">Cause of the accident/comment</label>
+        <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2"> Save Accident</button>
+    </form>
+
+    <hr>
+
+    <<a th:href="@{/accident}">Back to Accident List</a>
+</div>
+</body>
+
+</html>

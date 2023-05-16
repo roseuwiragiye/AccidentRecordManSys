@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #555555;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<h2>Welcome to Homepage</h2>
+<p th:if="${#authorization.expression('hasRole(''ROLE_ANONYMOUS'')')}">WELCOME TO POLICE ACCIDENT RECORD MANAGEMENT SYSTEM.</p>
+<p th:if="${#authorization.expression('hasRole(''USER'')')}">WELCOME TO POLICE ACCIDENT RECORD MANAGEMENT SYSTEM DEAR REGISTERED USER.</p>
+<p th:if="${#authorization.expression('hasRole(''ADMIN'')')}">WELCOME TO POLICE ACCIDENT RECORD MANAGEMENT SYSTEM ADMIN MANAGEMENT PORTAL.</p>
+<p th:if="${#authorization.expression('isAuthenticated()')}">WELCOME TO POLICE ACCIDENT RECORD MANAGEMENT SYSTEM.</p>
+
+<div th:if="${#authorization.expression('hasRole(''ROLE_ANONYMOUS'')')}">
+  <p><a th:href="@{|/login|}" th:text="'Log in'"></a></p>
+  <p><a th:href="@{|/register|}" th:text="'Register'"></a></p>
+</div>
+
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+  <p>Welcome, you are logged in as: <span th:text="${#authentication.name}"></span></p>
+  <p>Role: <span th:text="${#authentication.authorities}"></span></p>
+  <p th:if="${#authorization.expression('hasAuthority(''USER'')')}"><a th:href="@{|/dashbord|}" th:text="'users dashboard'"></a></p>
+  <p th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{|/admin/dashbord|}" th:text="'Admin dashboard'"></a></p>
+  <p><a th:href="@{/logout}">Log out</a></p>
+</div>
+
+</body>
+</html>
