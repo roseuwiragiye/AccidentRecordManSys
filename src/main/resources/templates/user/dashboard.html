@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<h2>Welcome to User Dashboard</h2>
+<h2>User Dashboard</h2>
 <p>Logged as: <span sec:authentication="name"></span></p>
 <p>Has role: <span sec:authentication="authorities"></span></p>
 <div>
-    <p><a th:href="@{/}">Home</a></p>
+    <p><a th:href="@{/}">Accident Records</a></p>
     <p><a th:href="@{/logout}">Log out</a></p>
 </div>
 </body>
